@@ -5,6 +5,7 @@ gem 'pg'
 gem 'haml-rails'
 gem 'compass'
 gem 'psych'
+gem 'devise'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

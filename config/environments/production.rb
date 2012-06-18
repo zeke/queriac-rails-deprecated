@@ -19,6 +19,9 @@ Queriac::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  
+  # From Devise instructions...
+  config.action_mailer.default_url_options = { :host => 'queri.ac' }
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
