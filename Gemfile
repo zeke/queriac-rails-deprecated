@@ -6,6 +6,9 @@ gem 'haml-rails'
 gem 'compass'
 gem 'psych'
 gem 'devise'
+gem "omniauth-twitter"
+gem 'foreman'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
