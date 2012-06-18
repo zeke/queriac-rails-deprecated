@@ -4,4 +4,13 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+begin
+  require 'rspec/core/rake_task'
+  desc "Run all examples"
+  RSpec::Core::RakeTask.new('spec')
+  task :default => :spec
+rescue LoadError
+end
+
 Queriac::Application.load_tasks
+
