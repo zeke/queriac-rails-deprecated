@@ -1,4 +1,6 @@
 Queriac::Application.routes.draw do
+  resources :queries
+
   resources :commands
 
   # The priority is based upon order of creation:
