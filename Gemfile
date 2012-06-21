@@ -9,6 +9,7 @@ gem 'devise'
 gem "omniauth-twitter"
 gem 'foreman'
 gem 'thin'
+gem 'sextant'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
