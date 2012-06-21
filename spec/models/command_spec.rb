@@ -1,5 +1,17 @@
 require 'spec_helper'
 
 describe Command do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "associations" do
+
+    it "has_many queries" do
+      Command.reflect_on_association(:queries).macro.should == :has_many
+    end
+    
+    it "belongs_to user" do
+      Command.reflect_on_association(:user).macro.should == :belongs_to 
+    end
+
+  end
+  
 end
