@@ -12,4 +12,4 @@ Development
 Testing
 -------
 
-    guard init
+    guard start
