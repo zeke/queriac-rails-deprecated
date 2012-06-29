@@ -10,6 +10,7 @@ gem "omniauth-twitter"
 gem 'foreman'
 gem 'thin'
 gem 'sextant'
+gem 'jquery-rails', '>= 1.0.12'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

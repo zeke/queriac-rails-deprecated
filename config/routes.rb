@@ -11,8 +11,10 @@ Queriac::Application.routes.draw do
   end
   
   match "/test/:msg" => "static#test"
+
+  mount_sextant if Rails.env.development?
   
-  # match "/:user/:command_string" => "commands#execute"
+  # match "/:user_id/:command_and_query" => "commands#execute"
   
   root :to => "static#index"
 end

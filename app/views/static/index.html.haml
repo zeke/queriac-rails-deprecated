@@ -1,1 +1,6 @@
-= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+- if user_signed_in?
+  = "You are signed in as #{current_user.inspect}. "
+  = link_to "Sign out", destroy_user_session_path, :method => :delete
+- else
+  = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+  
