@@ -1,12 +1,12 @@
 require 'uri'
 
 class Command < ActiveRecord::Base
-  attr_accessible :user_id, :sister_id, :keyword, :url, :name, :description, :shared, :use_http_post, :use_url_encoding
+  attr_accessible :user_id, :parent_id, :keyword, :url, :name, :description, :shared, :use_http_post, :use_url_encoding
   
   belongs_to :user
   has_many :queries, :dependent => :destroy
-  has_one :sister, :class_name => 'Command', :foreign_key => 'sister_id'
-  has_many :little_brothers, :class_name => 'Command', :foreign_key => 'sister_id'
+  belongs_to :parent, :class_name => 'Command'
+  has_many :children, :class_name => 'Command', :foreign_key => 'parent_id'
   
   validates_presence_of :keyword, :url, :name
   
@@ -17,27 +17,39 @@ class Command < ActiveRecord::Base
       bookmarklets shortcuts options quicksearches
     )
   end
-  
+    
   def execute(query='')
-    out = self.url.sub("{{q}}", query)
-    use_url_encoding ? URI.escape(out) : out
+    result = self.url.sub("{{q}}", query)
+    result = URI.escape(result) if escape?
+    return result if bookmarklet?
+    "window.location='#{result}';"
   end
   
-  amoeba do
-    exclude_field :queries
-    exclude_field :user_id
-    customize(lambda { |oldie,newbie|
-      newbie.sister_id = oldie.id
-    })
-  end
-
   def clone(user)
     clone = self.dup
     clone.user_id = user.id
+    clone.parent_id = self.id if original?
     clone.save!
     clone.reload
     clone
   end
+  
+  def bookmarklet?
+    self.bookmarklet
+  end
+  
+  def escape?
+    self.use_url_encoding
+  end
+  
+  def original?
+    self.parent_id.blank?
+  end
+  
+  def cloned?
+    !original?
+  end
+  
     
     
 end

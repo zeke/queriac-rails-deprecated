@@ -10,5 +10,9 @@ Queriac::Application.routes.draw do
     end
   end
   
+  match "/test/:msg" => "static#test"
+  
+  # match "/:user/:command_string" => "commands#execute"
+  
   root :to => "static#index"
 end

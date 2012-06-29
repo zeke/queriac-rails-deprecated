@@ -49,37 +49,58 @@ describe Command do
     
     it "returns an encoded URL with a query injected into it" do
       @command.use_url_encoding = true
-      @command.execute('hoi polloi').should == "http://foo.com/hoi%20polloi"
+      @command.execute('hoi polloi').should == "window.location='http://foo.com/hoi%20polloi';"
     end
     
     it "doesn't encode the URL if encoding is disabled on the command" do
       @command.use_url_encoding = false
-      @command.execute('hoi polloi').should == "http://foo.com/hoi polloi"
+      @command.execute('hoi polloi').should == "window.location='http://foo.com/hoi polloi';"
     end
-    
-    it "works for commands that don't take queries" do
-      @command.url = 'blah'
-      @command.execute.should == 'blah'
+        
+    it "doesn't wrap bookmarklets in `window.location` assignment string" do
+      @command.url = "alert('foo');"
+      @command.bookmarklet = true
+      @command.execute.should == "alert('foo');"
     end
-    
+        
   end
   
   describe "cloning" do
     
     before do
-      @user = mock('user')
-      @user.should_receive(:id).and_return(123)
+      @user = double('user', :id => 1)
+      @user2 = double('user', :id => 2)
+    end
+    
+    it "is original if it doesn't have a parent_id" do
+      @command.parent_id = nil
+      @command.original?.should == true
+      @command.cloned?.should == false
+    end
+    
+    it "is cloned if it's not original" do
+      @command.parent_id = 1
+      @command.original?.should == false
+      @command.cloned?.should == true
     end
 
     it "can be cloned to another user" do
       cloned_command = @command.clone(@user)
-      cloned_command.user_id.should == 123
+      cloned_command.user_id.should == 1
     end
   
-    it "retains a relationship with its sister command"# do
-      # cloned_command = @command.clone(@user)
-      # cloned_command.sister.should == @command
-    # end
+    it "retains a relationship with its parent" do
+      clone = @command.clone(@user)
+      clone.parent_id.should == @command.id
+      clone.parent.should == @command
+    end
+
+    it "retains a relationship with its children" do
+      c2 = @command.clone(@user)
+      c3 = @command.clone(@user2)
+      @command.children.size.should == 2
+    end
+
     
   end
   

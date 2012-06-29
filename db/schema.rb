@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621070014) do
+ActiveRecord::Schema.define(:version => 20120629044620) do
 
   create_table "commands", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "sister_id"
+    t.integer  "parent_id"
     t.string   "keyword"
     t.text     "url"
     t.string   "domain"
@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(:version => 20120621070014) do
     t.boolean  "use_url_encoding", :default => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.boolean  "bookmarklet",      :default => false
   end
 
   add_index "commands", ["keyword"], :name => "index_commands_on_keyword"
-  add_index "commands", ["sister_id"], :name => "index_commands_on_sister_id"
+  add_index "commands", ["parent_id"], :name => "index_commands_on_sister_id"
   add_index "commands", ["user_id"], :name => "index_commands_on_user_id"
 
   create_table "queries", :force => true do |t|
