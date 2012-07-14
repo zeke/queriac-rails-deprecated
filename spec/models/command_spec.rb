@@ -8,7 +8,7 @@ describe Command do
   
   describe "validation" do
     
-    it "is capable of being valid" do
+    it "is valid" do
       @command.should be_valid
     end
     
