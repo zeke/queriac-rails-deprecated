@@ -5,7 +5,6 @@ gem 'pg'
 gem 'haml-rails'
 gem 'compass'
 gem 'psych'
-gem 'devise'
 gem "omniauth-twitter"
 gem 'foreman'
 gem 'thin'
@@ -18,7 +17,6 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
-
 
 group :development do
   gem 'guard-rspec'
