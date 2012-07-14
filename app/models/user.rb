@@ -3,21 +3,17 @@ class User < ActiveRecord::Base
   has_many :commands, :dependent => :destroy
   has_many :queries, :through => :commands
   
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.new(
-        provider: auth.provider,
-        uid: auth.uid,
-        nickname: auth.extra.raw_info.screen_name,
-        name: auth.extra.raw_info.name,
-        location: auth.extra.raw_info.location,
-        image: auth.extra.raw_info.profile_image_url_https,
-        description: auth.extra.raw_info.description,
-        website: auth.extra.raw_info.url,
-      )
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.nickname = auth.extra.raw_info.screen_name
+      user.name = auth.extra.raw_info.name
+      user.location = auth.extra.raw_info.location
+      user.image = auth.extra.raw_info.profile_image_url_https
+      user.description = auth.extra.raw_info.description
+      user.website = auth.extra.raw_info.url
     end
-    user
   end
 
 end
