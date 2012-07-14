@@ -15,5 +15,9 @@ class User < ActiveRecord::Base
       user.website = auth.extra.raw_info.url
     end
   end
+  
+  def to_param
+    nickname
+  end
 
 end

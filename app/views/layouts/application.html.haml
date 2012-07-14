@@ -3,8 +3,27 @@
   %head
     %title queriac
     = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,700"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
+  
+    #header
+      //#logo_small
+      %h1
+        Queriac
+        %span
+          is a social command line for the web.
+      
+      %ul#nav
+        
+        - if current_user
+          %li
+            Signed in as 
+            = link_to(current_user.nickname, current_user)
+          %li= link_to "Sign Out", signout_path
+        - else
+          %li= link_to "Sign in with Twitter", "/auth/twitter"
+
     = yield

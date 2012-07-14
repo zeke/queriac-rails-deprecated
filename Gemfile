@@ -9,6 +9,8 @@ gem "omniauth-twitter"
 gem 'foreman'
 gem 'thin'
 gem 'sextant'
+gem 'zazz'
+gem 'shibui'
 gem 'jquery-rails', '>= 1.0.12'
 
 group :assets do
@@ -16,6 +18,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
 end
 
 group :development do

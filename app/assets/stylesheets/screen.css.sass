@@ -1,0 +1,62 @@
+@import "compass/reset"
+@import "compass/css3"
+@import "compass/utilities"
+@import "zazz"
+
+$background_color: #FFF
+$text_color: #000
+$main_color: #BF087E
+
+=main_font
+  font-family: 'Open Sans', sans-serif
+
+body
+  background-color: $background_color
+  +main_font
+  padding: 20px
+  font-size: 12px
+  line-height: 2em
+  
+  a
+    color: $main_color
+    +hover-link
+
+#header
+  +no_float
+  margin: 0 0 60px 0
+  
+#logo
+  +float_left
+  background: black image_url('queriac_logo.png') no-repeat center center
+  +border-radius(4px)
+  width: 60px
+  height: 60px
+  
+#logo_small
+  +float_left
+  background: $main_color image_url('queriac_logo_small.png') no-repeat center center
+  +border-radius(3px)
+  width: 32px
+  height: 32px
+  
+h1
+  +float_left
+  font-weight: bold
+  font-size: 18px
+  color: $main_color
+  span
+    color: lighten($text_color, 60%)
+    font-weight: normal
+  
+ul#nav
+  +horizontal-list
+  +float_right
+  max-width: 500px
+
+h2
+  font-size: 16px
+  color: lighten($text_color, 30%)
+  font-weight: bold
+  
+  
+  

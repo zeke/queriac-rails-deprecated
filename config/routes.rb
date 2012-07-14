@@ -6,6 +6,8 @@ Queriac::Application.routes.draw do
 
   mount_sextant if Rails.env.development?
   
+  match "/:nickname" => "users#show", :as => :user
+  
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   

@@ -1,6 +1,8 @@
 class CommandsController < ApplicationController
   
-  before_filter :authenticate_user!
+  def new
+    @command = Command.new
+  end
   
   def execute
     param_parts = params[:command_and_query].split(' ')
