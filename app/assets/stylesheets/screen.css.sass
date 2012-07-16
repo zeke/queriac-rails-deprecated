@@ -1,29 +1,28 @@
-@import "compass/reset"
-@import "compass/css3"
-@import "compass/utilities"
-@import "zazz"
-
-$background_color: #FFF
-$text_color: #000
-$main_color: #BF087E
-
-=main_font
-  font-family: 'Open Sans', sans-serif
+@import "config"
+@import "fonts"
+@import "forms"
 
 body
-  background-color: $background_color
+  background-color: #333
   +main_font
-  padding: 20px
-  font-size: 12px
+  padding: 0
+  font-size: 13px
   line-height: 2em
-  
+
   a
     color: $main_color
     +hover-link
 
+#content
+  margin: 40px 0
+  padding: 20px
+  +flexible_centered_container($content_width)
+  +border-radius(5px)
+  background-color: $background_color
+  
 #header
   +no_float
-  margin: 0 0 60px 0
+  margin: 0 0 30px 0
   
 #logo
   +float_left
@@ -52,11 +51,26 @@ ul#nav
   +horizontal-list
   +float_right
   max-width: 500px
+  > li
+    color: rgba($text_color, 0.5)
 
 h2
   font-size: 16px
-  color: lighten($text_color, 30%)
+  color: rgba($text_color, 0.5)
   font-weight: bold
+  margin: 0
+  padding: 20px 0 10px 0
   
-  
-  
+table
+  width: 100%
+  thead
+    tr
+      th
+        color: rgba($text_color, 0.5)
+  tbody
+    tr
+      td
+        border-top: 1px solid rgba($text_color, 0.05)
+        padding: 5px 0
+    
+            

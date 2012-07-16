@@ -8,22 +8,22 @@
     = csrf_meta_tags
 
   %body
-  
-    #header
-      //#logo_small
-      %h1
-        Queriac
-        %span
-          is a social command line for the web.
+    #content
+    
+      #header
       
-      %ul#nav
+        %h1
+          = link_to "Queriac", root_path
+          //%span is a social command line for the web.
+      
+        %ul#nav
         
-        - if current_user
-          %li
-            Signed in as 
-            = link_to(current_user.nickname, current_user)
-          %li= link_to "Sign Out", signout_path
-        - else
-          %li= link_to "Sign in with Twitter", "/auth/twitter"
+          - if logged_in?
+            %li
+              Signed in as 
+              = link_to(current_user.nickname, current_user)
+            %li= link_to "Sign Out", signout_path
+          - else
+            %li= link_to "Sign in with Twitter", "/auth/twitter"
 
-    = yield
+      = yield

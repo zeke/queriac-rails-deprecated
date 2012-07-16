@@ -12,6 +12,7 @@ gem 'sextant'
 gem 'zazz'
 gem 'shibui'
 gem 'jquery-rails', '>= 1.0.12'
+gem 'formtastic'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

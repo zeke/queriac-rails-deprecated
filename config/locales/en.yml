@@ -1,5 +1,25 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  formtastic:
+    titles:
+      post_details: "Post details"
+    labels:
+      command:
+        url: "URL"
+        shared: "Share this command with other users"
+        use_http_post: "Use POST instead of GET"
+        use_url_encoding: "Escape URLs"
+    hints:
+      command:
+        #url: "Substitute the query value with {{q}}"
+    placeholders:
+      command:
+        name: "Google Search"
+        keyword: "g"
+        url: "https://www.google.com/search?q={{q}}"
+        description: "Search the web using Google"
+    actions:
+      create: "Save %{model}"
+      update: "Save changes"
+      reset: "Reset form"
+      cancel: "Cancel and go back"
+      dummie: "Launch!"

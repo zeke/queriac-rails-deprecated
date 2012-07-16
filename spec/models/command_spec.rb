@@ -27,6 +27,16 @@ describe Command do
       @command.should have(1).error_on(:name)
     end
     
+    it "validates uniqueness of keyword, scoped to user"
+    
+    it "validatates that keyword is not a stopword"
+    
+  end
+  
+  describe "callbacks" do
+    
+    it "attempts to infer the command domain before save"
+    
   end
   
   describe "associations" do
