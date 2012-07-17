@@ -35,7 +35,18 @@ describe Command do
   
   describe "callbacks" do
     
-    it "attempts to infer the command domain before save"
+    it "attempts to infer the command domain before save" do
+      @command.url = "window.location='http://google.com';"
+      @command.save!
+      @command.domain.should == "google.com"
+    end
+    
+    it "gracefully handles absence of a domain in the command" do
+      @command.url = "console.log('bobo');"
+      @command.save!
+      @command.domain.should be_nil
+    end
+    
     
   end
   
@@ -54,25 +65,21 @@ describe Command do
   describe "execution" do
     
     before do
-      @command.url = "http://foo.com/{{q}}"
-    end
-    
-    it "returns an encoded URL with a query injected into it" do
-      @command.use_url_encoding = true
-      @command.execute('hoi polloi').should == "window.location='http://foo.com/hoi%20polloi';"
-    end
-    
-    it "doesn't encode the URL if encoding is disabled on the command" do
-      @command.use_url_encoding = false
-      @command.execute('hoi polloi').should == "window.location='http://foo.com/hoi polloi';"
-    end
-        
-    it "doesn't wrap bookmarklets in `window.location` assignment string" do
       @command.url = "alert('foo');"
-      @command.bookmarklet = true
+    end
+    
+    it "prepends arguments to first line of output" do
+      @command.execute(['fish']).should == "args = ['fish'];\nalert('foo');"
+    end
+    
+    it "doesn't require args and doesn't prepend an argument string if no arguments are present" do
       @command.execute.should == "alert('foo');"
     end
-        
+    
+    it "differents numerical args from string args" do
+      @command.execute(['bobo', 1, -1]).should == "args = ['bobo', 1, -1];\nalert('foo');"
+    end
+            
   end
   
   describe "cloning" do

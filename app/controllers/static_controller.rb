@@ -1,6 +1,8 @@
 class StaticController < ApplicationController
   
   def index
+    @commands = Command.includes(:user).all
+    @users = User.all    
   end
   
   def test

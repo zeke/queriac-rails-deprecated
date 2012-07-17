@@ -1,1 +1,4 @@
 %h2= @command.name
+
+- if logged_in? && @command.user == current_user
+  = link_to "edit", edit_user_command_path(current_user, @command.keyword)

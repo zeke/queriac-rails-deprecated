@@ -8,6 +8,8 @@ class Command < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Command'
   has_many :children, :class_name => 'Command', :foreign_key => 'parent_id'
   
+  before_save :infer_domain
+  
   validates_presence_of :keyword, :url, :name
   
   def self.stopwords
@@ -17,12 +19,21 @@ class Command < ActiveRecord::Base
       bookmarklets shortcuts options quicksearches
     )
   end
+  
+  def urls
+    URI.extract(self.url)
+  end
     
-  def execute(query='')
-    result = self.url.sub("{{q}}", query)
-    result = URI.escape(result) if escape?
-    return result if bookmarklet?
-    "window.location='#{result}';"
+  def execute(args=[])
+    result = []
+    unless args.empty?
+      args_as_js_array_elements = args.map do |arg|
+        !!(arg.to_s =~ /^[-+]?[0-9]+$/) ? arg : "'#{arg}'"
+      end.join(", ")
+      result << "args = [#{args_as_js_array_elements}]"
+    end
+    result << url
+    result.join(";\n")
   end
   
   def clone(user)
@@ -50,6 +61,16 @@ class Command < ActiveRecord::Base
     !original?
   end
   
-    
+  def to_param
+    keyword
+  end
+
+  private
+
+  def infer_domain
+    self.domain = self.urls.try(:first).try(:domain_without_www)
+    true
+  end  
+
     
 end
