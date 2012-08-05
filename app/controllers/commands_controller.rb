@@ -40,5 +40,20 @@ class CommandsController < ApplicationController
     command = current_user.commands.find_by_keyword(keyword) || not_found
     render :js => command.execute(args)
   end
+  
+  def destroy
+    @command = current_user.commands.find_by_keyword(params[:id])
+    @command.destroy
+    
+    respond_to do |format|
+      format.html do 
+        if request.xhr?
+          render :json => @command.to_json
+        else
+          redirect_to(root_path, :notice => "Command deleted.")
+        end
+      end
+    end
+  end  
     
 end

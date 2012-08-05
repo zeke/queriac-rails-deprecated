@@ -14,6 +14,7 @@ gem 'shibui'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'formtastic'
 gem 'wordnik_ruby_helpers'
+gem 'hashie'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

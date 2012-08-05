@@ -6,8 +6,9 @@ body
   background-color: #333
   +main_font
   padding: 0
-  font-size: 13px
-  line-height: 2em
+  font-size: 14px
+  line-height: 20px
+  background: transparent image_url('bg.jpg')
 
   a
     color: $main_color
@@ -19,6 +20,7 @@ body
   +flexible_centered_container($content_width)
   +border-radius(5px)
   background-color: $background_color
+  +box-shadow(rgba(#000, 0.2) 2px 2px 40px)
   
 #header
   +no_float
@@ -38,28 +40,32 @@ body
   width: 32px
   height: 32px
   
+ul#nav
+  +horizontal-list
+  +float_right
+  padding: 8px 0 0 0
+  max-width: 500px
+  > li
+    color: rgba($text_color, 0.5)
+  
 h1
   +float_left
   font-weight: bold
-  font-size: 18px
+  font-size: 32px
+  line-height: 36px
   color: $main_color
   span
     color: lighten($text_color, 60%)
     font-weight: normal
-  
-ul#nav
-  +horizontal-list
-  +float_right
-  max-width: 500px
-  > li
-    color: rgba($text_color, 0.5)
 
 h2
-  font-size: 16px
+  font-size: 24px
   color: rgba($text_color, 0.5)
   font-weight: bold
   margin: 0
   padding: 20px 0 10px 0
+  
+  
   
 table
   width: 100%
@@ -72,5 +78,32 @@ table
       td
         border-top: 1px solid rgba($text_color, 0.05)
         padding: 5px 0
+  
+  
+ul.commands
+  margin: 0
+  padding: 0
+  > li
+    padding: 10px 5px
+    border-bottom: 1px solid rgba($text_color, 0.1)
+    border-right: 1px solid rgba($text_color, 0)
+    border-left: 1px solid rgba($text_color, 0)
+    cursor: pointer
+    a
+      color: $text_color
+      font-weight: bold
+      
+     
+    &:last-child
+      border-bottom: none
+    &:hover
+      background-color: rgba($text_color, 0.05)
+      border-bottom: 1px solid rgba($text_color, 0.1)
+      border-right: 1px solid rgba($text_color, 0.1)
+      border-left: 1px solid rgba($text_color, 0.1)
+      +border-radius(2px)
     
-            
+
+
+
+

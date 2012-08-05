@@ -1,12 +1,10 @@
 
 %h2 Commands
 
-%ul
-  - @commands.each do |command|
-    %li= link_to user_command_path(command.user, command), user_command_path(command.user, command)
+%ul.commands
+  = render partial: "commands/listed_command", collection: @commands
 
-- if logged_in?
-  = link_to("New Command", new_user_command_path(current_user))
+= link_to("New Command", new_user_command_path(current_user)) if logged_in?
 
 %h2 Users
 

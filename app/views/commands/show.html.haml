@@ -1,4 +1,12 @@
 %h2= @command.name
 
+%p
+  = @command.keyword
+
+%p
+  = @command.url
+
+
 - if logged_in? && @command.user == current_user
   = link_to "edit", edit_user_command_path(current_user, @command.keyword)
+  = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)

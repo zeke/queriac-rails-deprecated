@@ -1,0 +1,7 @@
+- command = listed_command
+
+%li{id: "command_#{command.id}"}
+  =# favicon(command)
+  = link_to command.name, user_command_path(command.user, command)
+  
+  = link_to("delete", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command")

@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.find_by_nickname("zeke")
+
+raw_commands = JSON.parse(File.open(Rails.root + 'db/old_commands.json').read).map(&:symbolize_keys)
+
+Command.destroy_all
+
+raw_commands.each do |raw|
+  raw = Hashie::Mash.new raw
+  next if raw.keyword.blank?
+  puts raw.keyword
+  user.commands.create!({
+    keyword: raw.keyword,
+    url: raw.url,
+    name: raw.name,
+    description: raw.description
+  })
+end
