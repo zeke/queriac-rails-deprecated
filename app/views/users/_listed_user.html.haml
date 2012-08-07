@@ -1,0 +1,8 @@
+- user = listed_user
+
+%li
+  %a{href: user_path(user)}
+    = image_tag(user.image)
+    %span
+      = user.nickname
+      %em= user.name

@@ -2,6 +2,18 @@
 
 %li{id: "command_#{command.id}"}
   =# favicon(command)
-  = link_to command.name, user_command_path(command.user, command)
   
-  = link_to("delete", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command")
+  %a{:href => user_command_path(command.user, command)}
+    = command.name
+    - if logged_in? && command.user_id == current_user.id  
+      %span.keyword= command.keyword
+
+  - if logged_in?
+    %ul.menu    
+
+      - if command.user_id != current_user.id
+        %li= link_to("fork", "#", :class => "fork", :title => "Fork it!")
+
+      - if command.user_id == current_user.id
+        %li= link_to("config", edit_user_command_path(current_user, command.keyword), :title => "Edit")
+        %li= link_to("close", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :confirm => 'Delete command?', :title => "Delete")

@@ -46,7 +46,7 @@ ul#nav
   padding: 8px 0 0 0
   max-width: 500px
   > li
-    color: rgba($text_color, 0.5)
+    color: rgba($foreground_color, 0.5)
   
 h1
   +float_left
@@ -55,15 +55,15 @@ h1
   line-height: 36px
   color: $main_color
   span
-    color: lighten($text_color, 60%)
+    color: lighten($foreground_color, 60%)
     font-weight: normal
 
 h2
-  font-size: 24px
-  color: rgba($text_color, 0.5)
+  font-size: 20px
+  color: rgba($foreground_color, 0.5)
   font-weight: bold
   margin: 0
-  padding: 20px 0 10px 0
+  padding: 20px 0 20px 5px
   
   
   
@@ -72,38 +72,83 @@ table
   thead
     tr
       th
-        color: rgba($text_color, 0.5)
+        color: rgba($foreground_color, 0.5)
   tbody
     tr
       td
-        border-top: 1px solid rgba($text_color, 0.05)
+        border-top: 1px solid rgba($foreground_color, 0.05)
         padding: 5px 0
   
   
 ul.commands
-  margin: 0
-  padding: 0
+  +reset_list
   > li
+    +no_float
     padding: 10px 5px
-    border-bottom: 1px solid rgba($text_color, 0.1)
-    border-right: 1px solid rgba($text_color, 0)
-    border-left: 1px solid rgba($text_color, 0)
+    border-bottom: 1px solid rgba($foreground_color, 0.1)
+    border-right: 1px solid rgba($foreground_color, 0)
+    border-left: 1px solid rgba($foreground_color, 0)
     cursor: pointer
     a
-      color: $text_color
+      +float_left
+      color: $foreground_color
       font-weight: bold
-      
+      span.keyword
+        padding-left: 5px
+        color: rgba($foreground_color, 0.4)
+    ul.menu
+      +float_right
+      > li
+        +reset_list
+        +float_left
+        a
+          +transition(all 0.5s false 0s)
+          +iconic(24px)
+          padding: 0 5px
+          text-decoration: none  
+          color: rgba($foreground_color, 0.3)
+          &.fork
+            +rotate(-90deg)
+          &:hover
+            +transition(all 0s false 0s)
+            color: rgba($foreground_color, 1)
      
+    &:first-child
+      border-top: 1px solid rgba($foreground_color, 0.1)
     &:last-child
       border-bottom: none
     &:hover
-      background-color: rgba($text_color, 0.05)
-      border-bottom: 1px solid rgba($text_color, 0.1)
-      border-right: 1px solid rgba($text_color, 0.1)
-      border-left: 1px solid rgba($text_color, 0.1)
+      background-color: rgba($foreground_color, 0.05)
+      border-bottom: 1px solid rgba($foreground_color, 0.1)
+      border-right: 1px solid rgba($foreground_color, 0.1)
+      border-left: 1px solid rgba($foreground_color, 0.1)
       +border-radius(2px)
+      ul.menu
+        > li
+          a
+            color: rgba($foreground_color, 0.6)
+          
+ul.users
+  +reset_list
+  +no_float
+  > li
+    +float_left
+    +box-sizing(border-box)  
+    width: 256px
+    padding: 0 20px 20px 0
+    a
+      +no_float
+      color: $foreground_color
+      font-weight: bold
+      img
+        +float_left
+        +border-radius(3px)
+      span
+        +float_left
+        padding: 4px 0 0 10px
+        em
+          +no_float
+          font-weight: normal
+          color: rgba($foreground_color, 0.4)
+
     
-
-
-
-

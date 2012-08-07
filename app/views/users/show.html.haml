@@ -1,19 +1,4 @@
-%h2= @user.nickname
+%h2= "#{@user.nickname}'s commands"
 
-%h2 Commands
-
-%table
-  %thead
-    %tr
-      %th Keyword
-      %th Name
-      %th Options
-      
-  %tbody
-
-    - @commands.each do |command|
-      %tr
-        %td= link_to command.keyword, command_path(:nickname => @user.nickname, :keyword => command.keyword)
-        %td= command.name
-        %td &nbsp;
-  
+%ul.commands
+  = render partial: "commands/listed_command", collection: @commands
