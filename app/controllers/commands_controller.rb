@@ -35,7 +35,7 @@ class CommandsController < ApplicationController
   end
   
   def execute
-    args = params[:keyword_and_args].split(' ')
+    args = params[:keyword_and_args].gsub("+", ' ').split(' ')
     keyword = args.shift
     command = current_user.commands.find_by_keyword(keyword) || not_found
     render :js => command.execute(args)
