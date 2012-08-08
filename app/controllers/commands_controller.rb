@@ -21,7 +21,6 @@ class CommandsController < ApplicationController
   end
   
   def edit
-    # raise params.inspect
     @command = current_user.commands.find_by_keyword(params[:id])
   end
   
