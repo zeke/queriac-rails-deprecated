@@ -56,29 +56,25 @@ h1
   color: $main_color
   span
     color: lighten($foreground_color, 60%)
-    font-weight: normal
+    //font-weight: normal
 
 h2
   font-size: 20px
   color: rgba($foreground_color, 0.5)
   font-weight: bold
   margin: 0
-  padding: 20px 0 20px 5px
+  padding: 20px 0 20px 0
   
   
-  
-table
-  width: 100%
-  thead
-    tr
-      th
-        color: rgba($foreground_color, 0.5)
-  tbody
-    tr
-      td
-        border-top: 1px solid rgba($foreground_color, 0.05)
-        padding: 5px 0
-  
+ol.installation_steps
+  +reset_list
+  list-style-type: decimal
+  list-style-position: inside
+  > li
+    font-size: 18px
+    padding: 10px 0
+    &.complete
+      +opacity(0.5)
   
 ul.commands
   +reset_list

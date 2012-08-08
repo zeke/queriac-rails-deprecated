@@ -14,15 +14,15 @@
       
         %h1
           = link_to "Queriac", root_path
-          //%span is a social command line for the web.
-      
-        %ul#nav
-        
-          - if logged_in?
+          - unless logged_in?
+            %span
+              turns your address bar into a javascript command line.
+              
+              
+        - if logged_in?
+          %ul#nav
             %li= link_to(current_user.nickname, current_user)
             %li= link_to("New Command", new_user_command_path(current_user))
             %li= link_to "Sign Out", signout_path
-          - else
-            %li= link_to "Sign in with Twitter", "/auth/twitter"
 
       = yield

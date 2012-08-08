@@ -15,3 +15,23 @@ $ ->
       # $("h1").html new_heading_html
     else
       log "Problem deleting command:", command
+      
+
+  window.editor = ace.edit("editor")
+  editor.setTheme "ace/theme/textmate"
+  JavaScriptMode = require("ace/mode/javascript").Mode
+  editor.getSession().setMode new JavaScriptMode()
+
+  # Config
+  editor.renderer.setShowGutter false
+  editor.setShowInvisibles false
+  editor.setHighlightActiveLine(false)
+  editor.setFontSize "14px"
+  editor.renderer.setShowPrintMargin(false)
+
+  # Integrate with textarea
+  window.textarea = $("#command_url")#.hide()
+  
+  editor.getSession().setValue textarea.val()
+  editor.getSession().on "change", ->
+    textarea.val editor.getSession().getValue()

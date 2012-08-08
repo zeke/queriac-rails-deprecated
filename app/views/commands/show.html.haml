@@ -9,4 +9,8 @@
 
 - if logged_in? && @command.user == current_user
   = link_to "edit", edit_user_command_path(current_user, @command.keyword)
-  = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)
+  = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)  
+
+= "<div id='#editor'>#{@command.url}</div>".html_safe
+
+= include_ace_javascript

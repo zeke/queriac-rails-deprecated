@@ -4,6 +4,23 @@
 //%ul.commands
 =# render partial: "commands/listed_command", collection: @commands
 
+%h2 Installation
+
+%ol.installation_steps
+
+  - if logged_in?
+    %li.complete Sign in.
+  - else
+    %li= link_to "Sign in with Twitter.", "/auth/twitter"      
+
+  %li= link_to "Install the Google Chrome extension.", "https://chrome.google.com/extensions/detail/dgpgdcglcodcglcglbompkodmjnoobil"
+  %li
+    Copy and paste the 
+    = link_to("Queriac JS Engine", engine_path)
+    as your 
+    = link_to "default search engine", "/images/chrome_settings.png"
+    in Chrome.
+
 %h2 Users
 
 %ul.users

@@ -2,14 +2,17 @@ class StaticController < ApplicationController
   
   def index
     @commands = Command.includes(:user).all
-    @users = User.all    
+    @users = User.all
   end
   
-  def test
-    # result = Command.convert_to_javascript(@result)
-    result = []
-    result << "window.location='http://google.com?msg=#{params[:msg]}'"
-    render :text => result.join(';')
+  def engine
+    files = [
+      "javascript:",
+      File.open(Rails.root + "public/locomotive.js").read,
+      File.open(Rails.root + "public/zepto.min.js").read,
+      File.open(Rails.root + "public/caboose.js").read,
+    ]
+    render :js => files.join(";\n\n")
   end
   
 end

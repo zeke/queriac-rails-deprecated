@@ -8,10 +8,9 @@ Queriac::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 
-  # match "/:nickname" => "users#show", :as => :user
-  # match "/:nickname/:keyword/show" => "commands#show", :as => :command
-  # match "/:nickname/:keyword/edit" => "commands#edit", :as => :edit_command
   match "/exec/:keyword_and_args" => "commands#execute"
-  
+
+  match "/engine" => "static#engine", :as => :engine
+    
   root :to => "static#index"
 end

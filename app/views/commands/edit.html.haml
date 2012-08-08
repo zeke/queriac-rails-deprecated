@@ -3,14 +3,19 @@
 = semantic_form_for [current_user, @command] do |f|
 
   = f.inputs do
-    
+
+    #editor
+
     = f.input :name
     = f.input :keyword
     = f.input :url
     = f.input :description
+    
     =# f.input :shared
     =# f.input :use_http_post
     =# f.input :use_url_encoding
   
   = f.actions do
     = f.action :submit
+
+= include_ace_javascript
