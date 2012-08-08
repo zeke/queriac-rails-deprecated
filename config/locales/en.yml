@@ -15,7 +15,7 @@ en:
       command:
         name: "Google Search"
         keyword: "g"
-        url: "https://www.google.com/search?q={{q}}"
+        url: "alert('foo');"
         description: "Search the web using Google"
     actions:
       create: "Save %{model}"
