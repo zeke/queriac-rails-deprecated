@@ -5,7 +5,7 @@ module ApplicationHelper
   end
   
   def include_ace_javascript
-    javascript_include_tag %w(ace mode-javascript theme-textmate)
+    javascript_include_tag "ace", "mode-javascript", "theme-textmate"
   end
   
 end

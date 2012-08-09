@@ -11,22 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714174753) do
+ActiveRecord::Schema.define(:version => 20120808211648) do
 
   create_table "commands", :force => true do |t|
     t.integer  "user_id"
     t.integer  "parent_id"
     t.string   "keyword"
-    t.text     "url"
+    t.text     "script"
     t.string   "domain"
     t.string   "name"
     t.text     "description"
-    t.boolean  "shared",           :default => true
-    t.boolean  "use_http_post",    :default => false
-    t.boolean  "use_url_encoding", :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "bookmarklet",      :default => false
+    t.boolean  "shared",      :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "commands", ["keyword"], :name => "index_commands_on_keyword"

@@ -1,7 +1,7 @@
 require 'uri'
 
 class Command < ActiveRecord::Base
-  attr_accessible :user_id, :parent_id, :keyword, :url, :name, :description, :shared, :use_http_post, :use_url_encoding
+  attr_accessible :user_id, :parent_id, :keyword, :script, :name, :description, :shared
   
   belongs_to :user
   has_many :queries, :dependent => :destroy
@@ -10,7 +10,7 @@ class Command < ActiveRecord::Base
   
   before_save :infer_domain
   
-  validates_presence_of :keyword, :url, :name
+  validates_presence_of :keyword, :script, :name
   
   def self.stopwords
     %w(
@@ -21,19 +21,22 @@ class Command < ActiveRecord::Base
   end
   
   def urls
-    URI.extract(self.url)
+    URI.extract(self.script)
   end
     
   def execute(args=[])
     result = []
+    
+    # Prepend an `args` array to the JS output
     unless args.empty?
       args_as_js_array_elements = args.map do |arg|
         !!(arg.to_s =~ /^[-+]?[0-9]+$/) ? arg : "'#{arg}'"
       end.join(", ")
       result << "args = [#{args_as_js_array_elements}]"
     end
-    result << url
-    result.join(";\n")
+    
+    result << script
+    result.join(";\n\n")
   end
   
   def clone(user)
@@ -44,15 +47,7 @@ class Command < ActiveRecord::Base
     clone.reload
     clone
   end
-  
-  def bookmarklet?
-    self.bookmarklet
-  end
-  
-  def escape?
-    self.use_url_encoding
-  end
-  
+    
   def original?
     self.parent_id.blank?
   end

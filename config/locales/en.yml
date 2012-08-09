@@ -4,18 +4,13 @@ en:
       post_details: "Post details"
     labels:
       command:
-        url: "URL"
+        script: "Script"
         shared: "Share this command with other users"
-        use_http_post: "Use POST instead of GET"
-        use_url_encoding: "Escape URLs"
-    hints:
-      command:
-        #url: "Substitute the query value with {{q}}"
     placeholders:
       command:
         name: "Google Search"
         keyword: "g"
-        url: "alert('foo');"
+        script: "alert('foo');"
         description: "Search the web using Google"
     actions:
       create: "Save %{model}"

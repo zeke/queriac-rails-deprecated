@@ -30,7 +30,7 @@ $ ->
   editor.renderer.setShowPrintMargin(false)
 
   # Integrate with textarea
-  window.textarea = $("#command_url")#.hide()
+  window.textarea = $("#command_script").hide()
   
   editor.getSession().setValue textarea.val()
   editor.getSession().on "change", ->
