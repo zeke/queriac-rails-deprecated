@@ -5,6 +5,12 @@ class CommandsController < ApplicationController
     @command = Command.new
   end
   
+  def fork
+    @user = User.find_by_nickname(params[:user_id])
+    @new_command = @user.commands.find_by_keyword(params[:id]).fork(current_user)
+    redirect_to user_command_path(current_user, @new_command)
+  end
+  
   def create
     @command = current_user.commands.new(params[:command])
 

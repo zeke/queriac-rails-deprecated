@@ -1,8 +1,9 @@
 FactoryGirl.define do
 
   factory :command do
+    user
     keyword "g"
-    url "https://www.google.com/search?q={{q}}"
+    script "window.location='https://www.google.com/search?q='+args.join(' ');"
     name "Google"
   end
 

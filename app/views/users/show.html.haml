@@ -1,4 +1,4 @@
 %h2= "#{@user.nickname}'s commands"
 
 %ul.commands
-  = render partial: "commands/listed_command", collection: @commands
+  = render partial: "commands/listed_command", collection: @commands, :locals => {user: @user}

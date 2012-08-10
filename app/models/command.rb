@@ -10,15 +10,9 @@ class Command < ActiveRecord::Base
   
   before_save :infer_domain
   
-  validates_presence_of :keyword, :script, :name
-  
-  def self.stopwords
-    %w(
-      user_commands commands tags queries users opensearch
-      default_to delete search_form search_all execute update tag_set tag_add_remove find_by_ids
-      bookmarklets shortcuts options quicksearches
-    )
-  end
+  validates_presence_of :keyword, :script, :name, :user
+  validates_uniqueness_of :keyword, :scope => :user_id
+  # validates_exclusion_of :keyword, :in => %w(foo bar), :message => "That keyword is reserved."
   
   def urls
     URI.extract(self.script)
@@ -36,23 +30,23 @@ class Command < ActiveRecord::Base
     end
     
     result << script
-    result.join(";\n\n")
+    result.join(";\n")
   end
   
-  def clone(user)
-    clone = self.dup
-    clone.user_id = user.id
-    clone.parent_id = self.id if original?
-    clone.save!
-    clone.reload
-    clone
+  def fork(user)
+    fork = self.dup
+    fork.user_id = user.id
+    fork.parent_id = self.id
+    fork.save!
+    fork.reload
+    fork
   end
     
   def original?
     self.parent_id.blank?
   end
   
-  def cloned?
+  def forked?
     !original?
   end
   
