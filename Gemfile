@@ -14,6 +14,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'formtastic'
 gem 'wordnik_ruby_helpers'
 gem 'hashie'
+gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
