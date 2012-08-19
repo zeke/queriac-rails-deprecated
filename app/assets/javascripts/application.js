@@ -15,4 +15,5 @@
 //= require ace
 //= require theme-textmate
 //= require mode-javascript
+//= require worker-javascript
 //= require_tree .
