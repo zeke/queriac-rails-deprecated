@@ -12,5 +12,3 @@
   = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)  
 
 = "<div id='#editor'>#{@command.script}</div>".html_safe
-
-= include_ace_javascript

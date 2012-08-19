@@ -1,13 +1,3 @@
 %h2 New Command
 
-= semantic_form_for [current_user, @command] do |f|
-
-  = f.inputs do
-    
-    = f.input :name
-    = f.input :keyword
-    = f.input :script
-    = f.input :description
-  
-  = f.actions do
-    = f.action :submit
+= render partial: "form", locals: {command: @command}

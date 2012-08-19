@@ -4,6 +4,7 @@ en:
       post_details: "Post details"
     labels:
       command:
+        name: "Name"
         script: "Script"
         shared: "Share this command with other users"
     placeholders:

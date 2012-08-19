@@ -12,6 +12,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
+    ace-rails-ap (0.0.3)
     actionmailer (3.2.6)
       actionpack (= 3.2.6)
       mail (~> 2.4.4)
@@ -200,6 +201,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ace-rails-ap
   coffee-rails (~> 3.2.1)
   compass
   compass-rails

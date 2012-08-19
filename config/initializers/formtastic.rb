@@ -26,7 +26,7 @@ Formtastic::FormBuilder.default_text_area_height = 1
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
-# Formtastic::FormBuilder.optional_string = "(optional)"
+Formtastic::FormBuilder.optional_string = " (optional)"
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list, :first and :none

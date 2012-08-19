@@ -9,26 +9,19 @@ $ ->
     command = JSON.parse(xhr.responseText)
     if command.keyword
       $("#command_" + command.id).slideUp()
-      # new_heading_html = $("h1").html().replace(/(\d+)/, (wholeMatch, count) ->
-      #   parseInt(count, 10) - 1
-      # )
-      # $("h1").html new_heading_html
-    else
-      log "Problem deleting command:", command
-      
 
   window.editor = ace.edit("editor")
   editor.setTheme "ace/theme/textmate"
   JavaScriptMode = require("ace/mode/javascript").Mode
   editor.getSession().setMode new JavaScriptMode()
-
+  
   # Config
-  editor.renderer.setShowGutter false
+  editor.renderer.setShowGutter true
   editor.setShowInvisibles false
-  editor.setHighlightActiveLine(false)
+  editor.setHighlightActiveLine true
   editor.setFontSize "14px"
-  editor.renderer.setShowPrintMargin(false)
-
+  editor.renderer.setShowPrintMargin false
+  
   # Integrate with textarea
   window.textarea = $("#command_script").hide()
   
