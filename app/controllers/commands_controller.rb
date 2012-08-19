@@ -42,8 +42,13 @@ class CommandsController < ApplicationController
   def execute
     args = params[:keyword_and_args].gsub("+", ' ').split(' ')
     keyword = args.shift
-    command = current_user.commands.find_by_keyword(keyword) || not_found
-    render :js => command.execute(args)
+    command = current_user.commands.find_by_keyword(keyword)
+    
+    if command.nil?
+      render :js => "window.location='http://google.com/search?q=#{keyword} #{args.join(" ")}';"
+    else
+      render :js => command.execute(args)
+    end
   end
   
   def destroy
