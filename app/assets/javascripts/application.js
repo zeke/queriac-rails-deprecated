@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require ace
-//= require theme-textmate
 //= require mode-javascript
 //= require_tree .
