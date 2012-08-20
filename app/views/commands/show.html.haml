@@ -1,14 +1,13 @@
 %h2= @command.name
 
 %p
-  = @command.keyword
+  =# @command.keyword
 
 %p
-  = @command.script
+  =# @command.script
 
 
 - if logged_in? && @command.user == current_user
   = link_to "edit", edit_user_command_path(current_user, @command.keyword)
+  or 
   = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)  
-
-= "<div id='#editor'>#{@command.script}</div>".html_safe

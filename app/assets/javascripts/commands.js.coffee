@@ -13,6 +13,10 @@ $ ->
   window.editor = ace.edit("editor")
   editor.setTheme "ace/theme/textmate"
   JavaScriptMode = require("ace/mode/javascript").Mode
+  
+  # https://github.com/ajaxorg/ace/issues/732
+  require("ace/edit_session").EditSession::$startWorker = ->
+  
   editor.getSession().setMode new JavaScriptMode()
   
   # Config
