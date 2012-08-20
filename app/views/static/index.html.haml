@@ -13,12 +13,12 @@
   - else
     %li= link_to "Sign in with Twitter.", "/auth/twitter"      
 
-  %li= link_to "Install the Google Chrome extension.", "https://chrome.google.com/extensions/detail/dgpgdcglcodcglcglbompkodmjnoobil"
+  %li= link_to "Install the Chrome extension.", "https://chrome.google.com/webstore/detail/mbinhgdjnejaecocmffcfajgjmcnddik"
   %li
-    Copy and paste the 
+    Set 
     = link_to("Queriac JS Engine", engine_path)
     as your 
-    = link_to "default search engine", "/images/chrome_settings.png"
+    = link_to "default search engine", asset_path("chrome_settings.png")
     in Chrome.
 
 %h2 Users

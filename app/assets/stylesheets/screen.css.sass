@@ -128,10 +128,9 @@ ul.users
   +reset_list
   +no_float
   > li
-    +float_left
+    +no_float
     +box-sizing(border-box)  
-    width: 256px
-    padding: 0 20px 20px 0
+    padding: 10px 0
     a
       +no_float
       color: $foreground_color
@@ -139,11 +138,13 @@ ul.users
       img
         +float_left
         +border-radius(3px)
+        width: 32px
+        height: 32px
       span
         +float_left
         padding: 4px 0 0 10px
         em
-          +no_float
+          display: none
           font-weight: normal
           color: rgba($foreground_color, 0.4)
 
