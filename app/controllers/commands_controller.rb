@@ -2,7 +2,12 @@ class CommandsController < ApplicationController
   
   
   def new
-    @command = Command.new
+    @command = Command.new(
+      :name => params[:name],
+      :keyword => params[:keyword],
+      :script => params[:script],
+      :description => params[:description]
+    )
   end
   
   def fork
