@@ -87,6 +87,11 @@ describe Command do
     it "differents numerical args from string args" do
       @command.execute(['bobo', 1, -1]).should == "args = ['bobo', 1, -1];\nalert('foo');"
     end
+    
+    it "turns named arguments into vars" do
+      
+      @command.execute(['bobo', "user:zeke"]).should == "var user = 'zeke';\nargs = ['bobo'];\nalert('foo');"
+    end
             
   end
   

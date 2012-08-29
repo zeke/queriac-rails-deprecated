@@ -21,12 +21,28 @@ class Command < ActiveRecord::Base
   def execute(args=[])
     result = []
     
-    # Prepend an `args` array to the JS output
-    unless args.empty?
-      args_as_js_array_elements = args.map do |arg|
-        !!(arg.to_s =~ /^[-+]?[0-9]+$/) ? arg : "'#{arg}'"
-      end.join(", ")
-      result << "args = [#{args_as_js_array_elements}]"
+    # Prepend arguments (named and unnamed) to the JS output
+    if args.present?
+
+      positionals = []
+      
+      args.each do |arg|
+        
+        # named argument like 'user:bob'...          
+        if arg.to_s =~ /:/          
+          k, v = arg.to_s.split(":")
+          # wrap strings in single quotes, leave numbers alone
+          v = "'#{v}'" unless v.to_s =~ /^[-+]?[0-9]+$/
+          result << "var #{k} = #{v}"
+        
+        # unnamed positional argument like 'monkeys'
+        else
+          arg = "'#{arg}'" unless arg.to_s =~ /^[-+]?[0-9]+$/
+          positionals << arg
+        end
+        end
+      
+      result << "args = [#{positionals.join(", ")}]"
     end
     
     result << script
