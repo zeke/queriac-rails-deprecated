@@ -1,1 +1,1 @@
-/* Queriac Engine v1.0 - http://queri.ac */
+/* Queriac Engine v2 */
