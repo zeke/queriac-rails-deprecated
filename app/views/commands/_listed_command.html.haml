@@ -10,9 +10,8 @@
 
   - if logged_in?
     %ul.menu
-      %li= link_to("fork", fork_user_command_path(user, command.keyword), :class => "fork", :title => "Fork it!")
-
       - if user == current_user
         %li= link_to("config", edit_user_command_path(current_user, command.keyword), :title => "Edit")
-        //%li= link_to("close", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :confirm => 'Delete command?', :title => "Delete")
-        %li= link_to("close", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :title => "Delete")
+        %li= link_to("close", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :confirm => "Delete your '#{command.keyword}' command?", :title => "Delete")
+      - else
+        %li= link_to("fork", fork_user_command_path(user, command.keyword), :class => "fork", :title => "Fork it!")
