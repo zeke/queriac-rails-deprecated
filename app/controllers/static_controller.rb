@@ -19,4 +19,7 @@ class StaticController < ApplicationController
     render :js => files.join(";\n\n").gsub("BASE_URL", base_url)
   end
   
+  def help
+  end
+  
 end
