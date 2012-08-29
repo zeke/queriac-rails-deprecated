@@ -1,13 +1,23 @@
-%h2= @command.name
+%h2
+  = @command.name
+  %span.weak= "(#{@command.keyword})"
 
-%p
-  =# @command.keyword
+- if @command.description.present?
+  %p= @command.description
 
-%p
-  =# @command.script
+= semantic_form_for [current_user, @command] do |f|
 
+  = f.inputs do
+    = f.input :script, :as => :text
 
 - if logged_in? && @command.user == current_user
+  This command belongs to you. You can 
   = link_to "edit", edit_user_command_path(current_user, @command.keyword)
   or 
   = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)  
+  it.
+- else
+  This command belongs to 
+  = link_to(@command.user.nickname, @command.user) + ","
+  but you can 
+  = link_to("fork it", fork_user_command_path(@command.user, @command.keyword), :class => "fork", :title => "Fork it!") + "."

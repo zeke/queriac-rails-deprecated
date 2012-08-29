@@ -15,7 +15,7 @@ gem 'formtastic'
 gem 'wordnik_ruby_helpers'
 gem 'hashie'
 gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
-gem 'ace-rails-ap'
+# gem 'ace-rails-ap'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'

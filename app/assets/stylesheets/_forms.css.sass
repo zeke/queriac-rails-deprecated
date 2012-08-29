@@ -23,67 +23,73 @@
     &.actions
       padding: 0
 
-    ol
-      li
-        &.input
-          label
-            +box-sizing(border-box)
-            +no_float
-            margin: 0 0 0 3px
-            color: rgba($foreground_color, 0.6)
-          p.inline-hints
-            margin: 2px 0 0 3px
-          p.inline-errors
-            margin: 2px 0 0 3px
-            color: $error_color
-          input, textarea
-            width: 95%
-            +box-sizing(border-box)
-            display: block
-            +border-radius(2px)
-            padding: 10px 5px
-            margin: 0 0 0 3px
-            +no_float
-            //height: 30px
-            border: 1px solid #CCC
-            outline-color: $main_color
+  .input
+    .label
+      +box-sizing(border-box)
+      +no_float
+      margin: 0 0 0 3px
+      color: rgba($foreground_color, 0.6)
+      ppadding: 0
+      margin: 0
+      width: 100%
+    p.inline-hints
+      margin: 2px 0 0 3px
+    p.inline-errors
+      margin: 2px 0 0 3px
+      color: $error_color
+    input, textarea
+      width: 95%
+      +box-sizing(border-box)
+      display: block
+      +border-radius(2px)
+      padding: 10px 5px
+      margin: 0 0 0 3px
+      +no_float
+      //height: 30px
+      border: 1px solid #CCC
+      outline-color: $main_color
 
-            +main_font
-            &:focus
-              background: none
-          
-          &.boolean
-            +no_float
-            label
-              margin: 0
-              padding: 0
-              +float_left
-              line-height: 16px
-              input
-                +float_left          
-                width: auto
-                margin: 3px 10px 2px 2px
+      +main_font
+      &:focus
+        background: none
+    
+    &.boolean
+      +no_float
+      label
+        margin: 0
+        padding: 0
+        +float_left
+        line-height: 16px
+        input
+          +float_left          
+          width: auto
+          margin: 3px 10px 2px 2px
+  
+    &.error
+      input, textarea
+        border-color: $error_color
+        background-color: rgba($error_color, 0.1)
+  
+  .action
+    input
+      +transition(all 0.3s false 0s)
+      +main_font
+      margin: 20px 3px
+      padding: 10px 10px
+      border: none
+      +border-radius(5px)
+      font-size: 14px
+      font-weight: bold
+      cursor: pointer
+      background: $main_color image_url('pictos/59.png') no-repeat -40px center
+      color: $background_color
+      overflow: hidden
+      outline: $main_color
+      &:hover, &:focus
+        padding-left: 40px
+        background-position: 13px center
         
-          &.error
-            input, textarea
-              border-color: $error_color
-              background-color: rgba($error_color, 0.1)
-        
-        &.action
-          input
-            +transition(all 0.3s false 0s)
-            +main_font
-            margin: 20px 3px
-            padding: 10px 10px
-            border: none
-            +border-radius(5px)
-            font-size: 14px
-            font-weight: bold
-            cursor: pointer
-            background: $main_color image_url('pictos/59.png') no-repeat -40px center
-            color: $background_color
-            overflow: hidden
-            outline: $main_color
-            &:hover, &:focus
-              padding-left: 40px
-              background-position: 13px center
+div.CodeMirror
+  border: 1px solid #CCC
+  +box-sizing(border-box)
+  width: $content_width

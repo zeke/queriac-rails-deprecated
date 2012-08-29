@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ace
-//= require mode-javascript
+//= require codemirror
+//= require javascript
 //= require_tree .

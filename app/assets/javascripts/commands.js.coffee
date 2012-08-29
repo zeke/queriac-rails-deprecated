@@ -10,23 +10,4 @@ $ ->
     if command.keyword
       $("#command_" + command.id).slideUp()
 
-  window.editor = ace.edit("editor")
-  editor.setTheme "ace/theme/textmate"
-  JavaScriptMode = require("ace/mode/javascript").Mode
-  editor.getSession().setMode new JavaScriptMode()
-    
-  # https://github.com/ajaxorg/ace/issues/732
-  require("ace/edit_session").EditSession::$startWorker = ->
-
-  # Config
-  editor.renderer.setShowGutter true
-  editor.setShowInvisibles false
-  editor.setHighlightActiveLine true
-  editor.setFontSize "14px"
-  editor.renderer.setShowPrintMargin false
-  
-  # Integrate with textarea
-  window.textarea = $("#command_script").hide()
-  editor.getSession().setValue textarea.val()
-  editor.getSession().on "change", ->
-    textarea.val editor.getSession().getValue()
+  window.mirror = CodeMirror.fromTextArea(document.getElementById("command_script"), theme:"neat")
