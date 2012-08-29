@@ -10,5 +10,7 @@
  *
  *= require_self
  *= require formtastic
+ *= require codemirror
+ *= require neat
  *= require_tree .
  */
