@@ -5,7 +5,7 @@
 - if @command.description.present?
   %p= @command.description
 
-= semantic_form_for [current_user, @command] do |f|
+= semantic_form_for [@command.user, @command] do |f|
 
   = f.inputs do
     = f.input :script, :as => :text
