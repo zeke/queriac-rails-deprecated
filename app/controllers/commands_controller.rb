@@ -45,7 +45,7 @@ class CommandsController < ApplicationController
   end
   
   def execute
-    # support v1 or v2
+    # support v1 or v2/3
     args = (params[:keyword_and_args] || params[:q]).gsub("+", ' ').split(' ')
     keyword = args.shift
     command = current_user.commands.find_by_keyword(keyword)
