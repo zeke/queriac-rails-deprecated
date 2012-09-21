@@ -16,6 +16,7 @@ gem 'wordnik_ruby_helpers'
 gem 'hashie'
 gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
 # gem 'ace-rails-ap'
+gem 'dumper'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
