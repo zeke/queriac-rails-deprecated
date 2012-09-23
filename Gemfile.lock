@@ -91,6 +91,9 @@ GEM
       railties (~> 3.0)
     hashie (1.2.0)
     hike (1.2.1)
+    honeybadger (1.2.0)
+      activesupport
+      json
     i18n (0.6.0)
     journey (1.0.4)
     jquery-rails (2.0.2)
@@ -215,6 +218,7 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   hashie
+  honeybadger
   jquery-rails (>= 1.0.12)
   omniauth-twitter
   pg
