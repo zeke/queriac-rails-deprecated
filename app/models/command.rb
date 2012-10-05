@@ -8,10 +8,9 @@ class Command < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Command'
   has_many :children, :class_name => 'Command', :foreign_key => 'parent_id'
   
-  before_save :infer_domain
-  
   validates_presence_of :keyword, :script, :name, :user
   validates_uniqueness_of :keyword, :scope => :user_id
+  before_save :infer_domain
   # validates_exclusion_of :keyword, :in => %w(foo bar), :message => "That keyword is reserved."
   
   def urls
@@ -19,13 +18,15 @@ class Command < ActiveRecord::Base
   end
     
   def execute(args=[])
+    
+    # Save the query
+    self.queries.create(input: args.join(" "))
+
     result = []
     
     # Prepend arguments (named and unnamed) to the JS output
     if args.present?
-
       positionals = []
-      
       args.each do |arg|
         
         # named argument like 'user:bob'...          

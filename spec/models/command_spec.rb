@@ -55,7 +55,6 @@ describe Command do
       @command.domain.should be_nil
     end
     
-    
   end
   
   describe "associations" do
@@ -89,8 +88,11 @@ describe Command do
     end
     
     it "turns named arguments into vars" do
-      
       @command.execute(['bobo', "user:zeke"]).should == "var user = 'zeke';\nargs = ['bobo'];\nalert('foo');"
+    end
+    
+    it "creates a query" do
+      expect { @command.execute(["how hot is lava?"]) }.to change(Query, :count).by(1)
     end
             
   end

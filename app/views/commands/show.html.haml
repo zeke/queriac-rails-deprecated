@@ -1,3 +1,4 @@
+- owner = logged_in? && @command.user == current_user
 %h2
   = @command.name
   %span.weak= "(#{@command.keyword})"
@@ -10,14 +11,27 @@
   = f.inputs do
     = f.input :script, :as => :text
 
-- if logged_in? && @command.user == current_user
+- if owner
   This command belongs to you. You can 
   = link_to "edit", edit_user_command_path(current_user, @command.keyword)
   or 
   = link_to("delete", user_command_path(current_user, @command.keyword), :method => :delete)  
   it.
-- else
+- elsif logged_in?
   This command belongs to 
   = link_to(@command.user.nickname, @command.user) + ","
   but you can 
   = link_to("fork it", fork_user_command_path(@command.user, @command.keyword), :class => "fork", :title => "Fork it!") + "."
+
+
+- if owner && @command.queries.present?
+
+  %h3
+    Your Queries
+    %span.weak (Private)
+  
+  %ul
+    - @command.queries.each do |query|
+      %li= query.input
+
+  

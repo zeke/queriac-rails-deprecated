@@ -28,7 +28,7 @@ class CommandsController < ApplicationController
   
   def show
     @user = User.find_by_nickname(params[:user_id])
-    @command = @user.commands.find_by_keyword(params[:id])
+    @command = @user.commands.includes(:queries).find_by_keyword(params[:id])
   end
   
   def edit
