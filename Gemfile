@@ -6,16 +6,13 @@ gem 'haml-rails'
 gem 'compass'
 gem 'psych'
 gem "omniauth-twitter"
-gem 'foreman'
 gem 'thin'
 gem 'sextant'
-gem 'zazz', '0.0.7'
+gem 'zazz', '~> 0.0.7'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'formtastic'
 gem 'wordnik_ruby_helpers'
 gem 'hashie'
-gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
-# gem 'ace-rails-ap'
 gem 'dumper'
 gem 'honeybadger'
 
@@ -28,6 +25,7 @@ group :assets do
 end
 
 group :development do
+  gem 'foreman'
   gem 'guard-rspec'
 end
 
