@@ -15,6 +15,7 @@ gem 'wordnik_ruby_helpers'
 gem 'hashie'
 gem 'dumper'
 gem 'honeybadger'
+gem 'guardrail_notifier'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
