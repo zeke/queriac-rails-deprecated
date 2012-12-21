@@ -16,6 +16,7 @@ gem 'hashie'
 gem 'dumper'
 gem 'honeybadger'
 gem 'guardrail_notifier'
+gem 'libv8', '~> 3.11.8'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
