@@ -18,16 +18,17 @@
               turns your address bar into a javascript command line.
               It's an open source project powered by rails, chrome,
               and heroku.
-              
-        %ul#nav
-          - if logged_in?
-            %li= link_to("My Commands", current_user)
-            %li= link_to("New Command", new_user_command_path(current_user))
-          %li= link_to("Help", help_path)
-          - if logged_in?
-            %li= link_to "Sign Out", signout_path
-          - else
-            %li= link_to "Sign in with Twitter", "/auth/twitter"
+
+        - if logged_in?              
+          %ul#nav
+            - if logged_in?
+              %li= link_to("My Commands", current_user)
+              %li= link_to("New Command", new_user_command_path(current_user))
+            %li= link_to("Help", help_path)
+            - if logged_in?
+              %li= link_to "Sign Out", signout_path
+            - else
+              %li= link_to "Sign in with Twitter", "/auth/twitter"
 
       #main
         = yield

@@ -1,1 +1,0 @@
-/* Queriac Engine v3 */

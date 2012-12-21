@@ -14,6 +14,7 @@ Queriac::Application.routes.draw do
 
   match "/v2" => "commands#execute"
   match "/v3" => "commands#execute"
+  match "/v4" => "commands#execute"
   match "/exec/:keyword_and_args" => "commands#execute"
 
   match "/engine" => "static#engine", :as => :engine

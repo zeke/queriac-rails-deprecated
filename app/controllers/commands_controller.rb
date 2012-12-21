@@ -45,13 +45,13 @@ class CommandsController < ApplicationController
   end
   
   def execute
-    # support v1 or v2/3
+    # support v1 or v2/3/4
     args = (params[:keyword_and_args] || params[:q]).gsub("+", ' ').split(' ')
     keyword = args.shift
     command = current_user.commands.find_by_keyword(keyword)
     
     if command.nil?
-      render :js => "window.location='http://google.com/search?q=#{keyword} #{args.join(" ")}';"
+      render :js => "location='http://google.com/search?q=#{keyword} #{args.join(" ")}';"
     else
       render :js => command.execute(args)
     end
