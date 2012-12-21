@@ -1,5 +1,3 @@
-%h2 Installation
-
 %ol.installation_steps
 
   - if logged_in?
@@ -9,9 +7,9 @@
 
   %li= link_to "Install the Chrome extension.", "https://chrome.google.com/webstore/detail/mbinhgdjnejaecocmffcfajgjmcnddik"
   %li
-    Set 
-    = link_to("Queriac JS Engine", engine_path)
-    as your 
+    Copy the
+    = link_to("Queriac Engine", engine_path)
+    and paste it as your
     = link_to "default search engine", asset_path("chrome_settings.png")
     in Chrome.
 

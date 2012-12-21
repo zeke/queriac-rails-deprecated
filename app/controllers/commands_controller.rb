@@ -48,8 +48,12 @@ class CommandsController < ApplicationController
     # support v1 or v2/3/4
     args = (params[:keyword_and_args] || params[:q]).gsub("+", ' ').split(' ')
     keyword = args.shift
-    command = current_user.commands.find_by_keyword(keyword)
     
+    if !logged_in?
+      render :js => "location='#{root_url(login_required: 1)}';" and return
+    end
+    
+    command = current_user.commands.find_by_keyword(keyword)
     if command.nil?
       render :js => "location='http://google.com/search?q=#{keyword} #{args.join(" ")}';"
     else

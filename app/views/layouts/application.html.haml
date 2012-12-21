@@ -12,13 +12,16 @@
       #header
       
         %h1
-          = link_to "Queriac", root_path
-          - unless logged_in?
+          = link_to "Queriac", root_path            
+          - if params[:login_required]
+            %span
+              needs you to log in before you can do all the cool stuff.
+          - elsif !logged_in?
             %span
               turns your address bar into a javascript command line.
               It's an open source project powered by rails, chrome,
               and heroku.
-
+              
         - if logged_in?              
           %ul#nav
             - if logged_in?
