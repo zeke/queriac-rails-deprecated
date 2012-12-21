@@ -19,10 +19,10 @@ Fetch Twitter OAuth credentials from the heroku app config:
 heroku config -a queriac | grep TWITTER
 ```
 
-[dnsimple](https://dnsimple.com/domains/queriac.com) credentials are in there too:
+[DNSimple](https://dnsimple.com/domains/queriac.com) credentials are in there too:
 
 ```bash
-heroku config | grep DNS
+heroku config -a queriac | grep DNS
 ```
 
 Testing
