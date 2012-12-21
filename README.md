@@ -13,11 +13,16 @@ bundle exec rake db:migrate
 foreman start
 ```
 
-You might need to set up some config vars, namely twitter OAuth stuff.
-Fetch that from the heroku app config:
+Fetch Twitter OAuth credentials from the heroku app config:
 
 ```bash
 heroku config -a queriac | grep TWITTER
+```
+
+[dnsimple](http://dnsimple.com) credentials are in there too:
+
+```bash
+heroku config | grep DNS
 ```
 
 Testing
