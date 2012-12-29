@@ -1,0 +1,48 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "slug": "queriac",
+  "name": "Queriac",
+  "description": "Turn your browser's address bar into a javascript command line.",
+  "url": "https://www.queriac.com",
+  "github_repo_url": "https://github.com/zeke/queriac",
+  "keywords": [
+    "browser",
+    "chrome",
+    "javascript",
+    "search",
+    "shell",
+    "terminal",
+    "productivity",
+    "keyboard",
+    "shortcut"
+  ],
+  "maintainers": [
+    {
+      "name": "Zeke Sikelianos",
+      "email": "zeke@heroku.com",
+      "twitter": "zeke",
+      "github": "zeke",
+      "web": "http://zeke.sikelianos.com"
+    }
+  ],
+  "bugs": {
+    "mail": "zeke@queriac.com",
+    "web": "https://github.com/zeke/queriac/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://en.wikipedia.org/wiki/MIT_License"
+    }
+  ],
+  "icons": {
+    "16": "profile/icon-16.png",
+    "32": "profile/icon-32.png",
+    "64": "profile/icon-48.png",
+    "128": "profile/icon-128.png",
+    "256": "profile/icon-256.png",
+    "svg": "profile/logo.svg",
+    "monogram": "profile/logo_monogram.svg"
+  }
+}

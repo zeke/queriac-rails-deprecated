@@ -1,10 +1,11 @@
 {
   manifest_version: 1
   version: 1
+  slug: "queriac"
   name: "Queriac"
+  description: "Turn your browser's address bar into a javascript command line."
   url: "https://www.queriac.com"
   github_repo_url: "https://github.com/zeke/queriac"
-  description: "Turn your browser's address bar into a javascript command line."
   keywords: [
     "browser"
     "chrome"
@@ -31,12 +32,11 @@
     url: "http://en.wikipedia.org/wiki/MIT_License"
    ]
   icons:
-    16: "public/profile/icon-16.png"
-    32: "public/profile/icon-32.png"
-    64: "public/profile/icon-48.png"
-    128: "public/profile/icon-128.png"
-    256: "public/profile/icon-256.png"
-  logos:
-    regular: "public/profile/logo.svg"
-    monogram: "public/profile/logo_monogram.svg"
+    16: "profile/icon-16.png"
+    32: "profile/icon-32.png"
+    64: "profile/icon-48.png"
+    128: "profile/icon-128.png"
+    256: "profile/icon-256.png"
+    svg: "profile/logo.svg"
+    monogram: "profile/logo_monogram.svg"
 }
