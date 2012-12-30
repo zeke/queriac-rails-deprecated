@@ -29,7 +29,7 @@ Generating the App Manifest
 
 ```bash
 # npm install -g cson jsontool
-cson2json app.cson | json > app.json
+rake manifest
 ```
 
 Testing

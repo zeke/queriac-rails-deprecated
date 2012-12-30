@@ -1,11 +1,9 @@
 {
   "manifest_version": 1,
   "version": 1,
-  "slug": "queriac",
+  "domain": "queriac.com",
   "name": "Queriac",
   "description": "Turn your browser's address bar into a javascript command line.",
-  "url": "https://www.queriac.com",
-  "github_repo_url": "https://github.com/zeke/queriac",
   "keywords": [
     "browser",
     "chrome",
@@ -23,26 +21,25 @@
       "email": "zeke@heroku.com",
       "twitter": "zeke",
       "github": "zeke",
-      "web": "http://zeke.sikelianos.com"
+      "website": "http://zeke.sikelianos.com"
     }
   ],
   "bugs": {
     "mail": "zeke@queriac.com",
     "web": "https://github.com/zeke/queriac/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://en.wikipedia.org/wiki/MIT_License"
-    }
-  ],
-  "icons": {
-    "_16": "/profile/icon-16.png",
-    "_32": "/profile/icon-32.png",
-    "_64": "/profile/icon-64.png",
-    "_128": "/profile/icon-128.png",
-    "_256": "/profile/icon-256.png",
-    "svg": "/profile/logo.svg",
-    "monogram": "/profile/logo_monogram.svg"
+  "github_repo_url": "https://github.com/zeke/queriac",
+  "license": {
+    "type": "MIT",
+    "url": "http://en.wikipedia.org/wiki/MIT_License"
+  },
+  "media": {
+    "icon_16": "/media/icon-16.png",
+    "icon_32": "/media/icon-32.png",
+    "icon_64": "/media/icon-64.png",
+    "icon_128": "/media/icon-128.png",
+    "icon_256": "/media/icon-256.png",
+    "logo_svg": "/media/logo.svg",
+    "monogram_svg": "/media/monogram.svg"
   }
 }

@@ -14,3 +14,10 @@ end
 
 Queriac::Application.load_tasks
 
+# # npm install -g cson jsontool
+desc "Generate manifest.json from manifest.cson"
+task :manifest => :environment do
+  code = "cson2json public/app.cson | json > public/app.json"
+  puts code
+  exec code
+end
