@@ -79,8 +79,8 @@ describe Command do
       @command.execute(['fish']).should == "args = ['fish'];\nalert('foo');"
     end
     
-    it "doesn't require args and doesn't prepend an argument string if no arguments are present" do
-      @command.execute.should == "alert('foo');"
+    it "doesn't require args but prepends an empty args array if no arguments are present" do
+      @command.execute.should == "args = [];\nalert('foo');"
     end
     
     it "differents numerical args from string args" do

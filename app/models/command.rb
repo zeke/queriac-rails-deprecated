@@ -25,26 +25,24 @@ class Command < ActiveRecord::Base
     result = []
     
     # Prepend arguments (named and unnamed) to the JS output
-    if args.present?
-      positionals = []
-      args.each do |arg|
+    positionals = []
+    args.each do |arg|
         
-        # named argument like 'user:bob'...          
-        if arg.to_s =~ /:/          
-          k, v = arg.to_s.split(":")
-          # wrap strings in single quotes, leave numbers alone
-          v = "'#{v}'" unless v.to_s =~ /^[-+]?[0-9]+$/
-          result << "var #{k} = #{v}"
+      # named argument like 'user:bob'...          
+      if arg.to_s =~ /:/          
+        k, v = arg.to_s.split(":")
+        # wrap strings in single quotes, leave numbers alone
+        v = "'#{v}'" unless v.to_s =~ /^[-+]?[0-9]+$/
+        result << "var #{k} = #{v}"
         
-        # unnamed positional argument like 'monkeys'
-        else
-          arg = "'#{arg}'" unless arg.to_s =~ /^[-+]?[0-9]+$/
-          positionals << arg
-        end
-        end
-      
-      result << "args = [#{positionals.join(", ")}]"
+      # unnamed positional argument like 'monkeys'
+      else
+        arg = "'#{arg}'" unless arg.to_s =~ /^[-+]?[0-9]+$/
+        positionals << arg
+      end
     end
+      
+    result << "args = [#{positionals.join(", ")}]"
     
     result << script
     result.join(";\n")
