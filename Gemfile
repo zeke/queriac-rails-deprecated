@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'haml-rails'
 gem 'compass'
@@ -17,6 +17,7 @@ gem 'dumper'
 gem 'honeybadger'
 gem 'guardrail_notifier'
 gem 'libv8', '~> 3.11.8'
+gem 'lograge'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
