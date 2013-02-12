@@ -36,5 +36,5 @@ Testing
 -------
 
 ```bash
-guard start
+bundle exec guard start
 ```
