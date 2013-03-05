@@ -21,25 +21,25 @@ body
   +border-radius(5px)
   background-color: $background_color
   +box-shadow(rgba(#000, 0.2) 2px 2px 40px)
-  
+
 #header
   +no_float
   margin: 0 0 30px 0
-  
+
 #logo
   +float_left
   background: black image_url('queriac_logo.png') no-repeat center center
   +border-radius(4px)
   width: 60px
   height: 60px
-  
+
 #logo_small
   +float_left
   background: $main_color image_url('queriac_logo_small.png') no-repeat center center
   +border-radius(3px)
   width: 32px
   height: 32px
-  
+
 ul#nav
   +horizontal-list
   +float_right
@@ -47,7 +47,7 @@ ul#nav
   max-width: 500px
   > li
     color: rgba($foreground_color, 0.5)
-  
+
 h1
   +float_left
   font-weight: bold
@@ -75,10 +75,10 @@ h3
 p
   padding: 5px 0 10px 0
   margin: 0
-  
+
 .weak
   +opacity(0.5)
-  
+
 ol.installation_steps
   +reset_list
   list-style-type: decimal
@@ -89,7 +89,7 @@ ol.installation_steps
     padding: 10px 0
     &.complete
       +opacity(0.5)
-  
+
 ul.commands
   +reset_list
   > li
@@ -113,16 +113,16 @@ ul.commands
         +float_left
         a
           +transition(all 0.5s false 0s)
-          +iconic(24px)
+          //+iconic(24px)
           padding: 0 5px
-          text-decoration: none  
+          text-decoration: none
           color: rgba($foreground_color, 0.3)
           &.fork
-            +rotate(-90deg)
+            //+rotate(-90deg)
           &:hover
             +transition(all 0s false 0s)
             color: rgba($foreground_color, 1)
-     
+
     &:first-child
       border-top: 1px solid rgba($foreground_color, 0.1)
     &:last-child
@@ -137,13 +137,13 @@ ul.commands
         > li
           a
             color: rgba($foreground_color, 0.6)
-          
+
 ul.users
   +reset_list
   +no_float
   > li
     +no_float
-    +box-sizing(border-box)  
+    +box-sizing(border-box)
     padding: 10px 0
     a
       +no_float
@@ -162,4 +162,4 @@ ul.users
           font-weight: normal
           color: rgba($foreground_color, 0.4)
 
-    
+

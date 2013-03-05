@@ -1,17 +1,18 @@
 - command = listed_command
+- owner = logged_in? && user == current_user
 
 %li{id: "command_#{command.id}"}
   =# favicon(command)
-  
-  %a{:href => user_command_path(user, command)}
+
+  %a{:href => (owner ? edit_user_command_path(user, command) : user_command_path(user, command)) }
     = command.name
-    - if logged_in? && user == current_user
+    - if owner
       %span.keyword= command.keyword
 
   - if logged_in?
     %ul.menu
       - if user == current_user
-        %li= link_to("config", edit_user_command_path(current_user, command.keyword), :title => "Edit")
-        %li= link_to("close", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :confirm => "Delete your '#{command.keyword}' command?", :title => "Delete")
+        %li= link_to("Edit", edit_user_command_path(current_user, command.keyword), :title => "Edit")
+        %li= link_to("Delete", user_command_path(current_user, command.keyword), :method => :delete, :remote => true, :id => "delete_command", :confirm => "Delete your '#{command.keyword}' command?", :title => "Delete")
       - else
-        %li= link_to("fork", fork_user_command_path(user, command.keyword), :class => "fork", :title => "Fork it!")
+        %li= link_to("Fork", fork_user_command_path(user, command.keyword), :class => "fork", :title => "Fork it!")
