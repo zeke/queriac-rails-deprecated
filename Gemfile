@@ -9,7 +9,7 @@ gem "omniauth-twitter"
 gem 'thin'
 gem 'sextant'
 gem 'zazz', '~> 0.0.7'
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails' , '~> 2.2.1'
 gem 'formtastic'
 gem 'wordnik_ruby_helpers'
 gem 'hashie'
